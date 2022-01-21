@@ -1,5 +1,6 @@
 <template>
   <ul class="ul">
+    <h1>Пиво</h1>
     <Loader v-if="loader"/>
     <Beers v-else v-bind:beer="beer"/>
     <div class="div">
@@ -43,15 +44,22 @@ import Loader from '../components/Loader.vue'
     mounted() {
       fetch('https://random-data-api.com/api/beer/random_beer')
           .then(data => data.json())
-          .then(data => this.beer = data)
-          
+          .then(data => {
+            this.loader = true
+            setTimeout(() => {
+              this.beer = data
+              this.loader = false
+            }, 1000)
+            
+          }
+          )
         }
     }
 </script>
 
 <style >
 .ul {
-  padding: 30px 0 20px 0;
+  padding: 30px 0;
   list-style-type: none;
   width: 100%;
   max-width: 600px;
@@ -61,6 +69,8 @@ import Loader from '../components/Loader.vue'
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: hidden;
+  word-wrap:break-word;
 }
 
 .div {

@@ -46,11 +46,10 @@ export default {
   justify-content: space-between;
   border-bottom: 1px solid rgba(0, 0, 0, 0.7);
   padding-bottom: 10px;
-  margin-bottom: 20px;
 }
 
 .li:last-of-type {
-  margin-bottom: 50px;
+  margin-bottom: 100px;
 }
 
 .p {
@@ -58,7 +57,16 @@ export default {
   font-size: 20px;
   font-weight: 500;
   width: 50%;
+
 }
+
+@media screen and (max-width: 450px) {
+  .p {
+    font-size: 15px;
+    padding: 0 10px;
+  }
+}
+
 </style>
 
 
